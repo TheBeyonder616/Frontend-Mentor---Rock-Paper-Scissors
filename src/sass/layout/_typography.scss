@@ -1,0 +1,80 @@
+@use "../abstracts/mixin" as *;
+
+.heading-secondary {
+  text-transform: uppercase;
+  @include font-size(0.7);
+
+  &.heading--rules {
+    @include font-size(1.2);
+    color: var(--color-dark-text);
+  }
+
+  &.heading--picked {
+    @include font-size();
+    color: rgb(var(--white) / 0.9);
+    letter-spacing: 0.1rem;
+    &.heading--desktop {
+      display: none;
+    }
+    @include media($desktop) {
+      &.heading--mobile {
+        display: none;
+      }
+      &.heading--desktop {
+        display: inline;
+      }
+    }
+  }
+
+  &.heading--winner {
+    @include font-size(2.4);
+    color: rgb(var(--white));
+    letter-spacing: 0.2rem;
+
+    @include media($desktop) {
+      line-height: 1;
+    }
+  }
+
+  &.heading--score {
+    color: var(--color-score-text);
+    font-weight: var(--fnt-bold);
+    display: grid;
+    place-items: center;
+    line-height: 1.2;
+
+    @include media($mobileMid) {
+      @include font-size(0.7);
+    }
+    @include media($desktop) {
+      @include font-size(0.9);
+    }
+
+    .span {
+      font-weight: var(--fnt-bold);
+      @include font-size(0.5);
+      @include media($mobileMid) {
+        @include font-size(0.6);
+      }
+
+      @include media($desktop) {
+        @include font-size(0.7);
+      }
+    }
+  }
+}
+
+.heading-third {
+  @include font-size(1.2);
+  color: var(--color-dark-text);
+  letter-spacing: 0.1rem;
+  line-height: 1;
+  align-items: center;
+
+  @include media($mobileMid) {
+    @include font-size(1.5);
+  }
+  @include media($desktop) {
+    @include font-size(2);
+  }
+}

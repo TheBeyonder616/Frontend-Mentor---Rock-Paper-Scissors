@@ -1,0 +1,38 @@
+@use "../abstracts/mixin" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  @include gradient(
+    var(--gradient-background-start),
+    var(--gradient-background-end),
+    true,
+    circle
+  );
+  font-family: var(--fnt-family);
+  line-height: 1.5;
+}
+
+button {
+  appearance: none;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  line-height: inherit;
+  box-shadow: none;
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+@use "../abstracts/mixin" as *;
+
+.rules {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  display: grid;
+  place-items: center;
+  background-color: rgb(var(--black) / 0.5);
+  backdrop-filter: blur(0.5rem);
+  transition: opacity 1s ease-in-out;
+
+  &__wrapper {
+    width: clamp(29rem, 75%, 35rem);
+    margin: auto;
+    border-radius: 1rem;
+    aspect-ratio: 1;
+    padding: 2rem;
+    background: rgb(var(--white));
+    @include insetShadow(0.2);
+    z-index: 22;
+  }
+
+  //!====Header
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__body {
+    // background-color: red;
+  }
+}

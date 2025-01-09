@@ -1,0 +1,383 @@
+@use "../abstracts/mixin" as *;
+
+#root {
+  width: clamp(30rem, 100%, 144rem);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  align-content: space-between;
+  padding-block: 2rem;
+  overflow: hidden;
+  gap: 15rem;
+
+  @include media($desktop) {
+    margin-inline: auto;
+    gap: 15rem;
+  }
+}
+
+.noscript {
+  text-align: center;
+  color: rgb(153 0 0);
+  background-color: rgb(255 204 204);
+}
+//!======================[SCORE]
+//?=============================
+//?==============================
+//!======================[GAME]
+.game {
+  width: clamp(29rem, 90%, 45rem);
+  aspect-ratio: 1.5/1;
+  display: grid;
+  place-items: center;
+  @include media($desktop) {
+    &.game--win {
+      width: clamp(29rem, 100%, 144rem);
+      aspect-ratio: unset;
+    }
+  }
+
+  &__pick {
+    --_play-width: clamp(29rem, 50%, 45rem);
+    width: var(--_play-width);
+    aspect-ratio: 1.5/1;
+    display: grid;
+    place-items: center;
+    position: relative;
+    @include media($desktop) {
+      transform: scale(1.4);
+    }
+  }
+
+  //!===================[Play]
+  &__play {
+    position: absolute;
+    width: clamp(5rem, 30%, 9rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    @include insetShadow(0.5);
+    cursor: pointer;
+    border: 2px solid transparent;
+    outline: 2px solid transparent;
+
+    transition: border 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+      outline 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86),
+      box-shadow 0.3s ease-in-out, transform 0.2s ease;
+
+    &:active {
+      transition: translateY(0.3rem);
+    }
+
+    &:focus-within {
+      border: 2px dotted rgb(var(--white) / 0.8);
+      outline: 2px dotted rgb(var(--white) / 0.8);
+      @include shadow(0.5);
+      transform: scale(1.12);
+    }
+
+    &:hover {
+      transform: scale(1.12);
+    }
+
+    //?=============================
+    //?=============================
+    //?=============================
+    //!=============================[Player]
+    &.play--picked {
+      width: 100%;
+      inset: 0 !important;
+      margin: auto;
+    }
+
+    //!====================[Modify]
+    &.play--lizard {
+      @include gradient(
+        var(--gradient-lizard-start),
+        var(--gradient-lizard-end),
+        true,
+        circle
+      );
+      bottom: 0;
+      left: -2%;
+    }
+    &.play--spock {
+      @include gradient(
+        var(--gradient-spock-start),
+        var(--gradient-spock-end),
+        true,
+        circle
+      );
+
+      bottom: 50%;
+      left: -10%;
+    }
+
+    &.play--rock {
+      @include gradient(
+        var(--gradient-rock-start),
+        var(--gradient-rock-end),
+        true,
+        circle
+      );
+      bottom: 0;
+      right: -2%;
+    }
+
+    &.play--paper {
+      @include gradient(
+        var(--gradient-paper-start),
+        var(--gradient-paper-end),
+        true,
+        circle
+      );
+      bottom: 50%;
+      right: -10%;
+    }
+
+    &.play--scissors {
+      @include gradient(
+        var(--gradient-scissors-end),
+        var(--gradient-scissors-end),
+        true,
+        circle
+      );
+      top: -10%;
+    }
+  }
+
+  //!===================[Play content]
+  &__play-content {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+
+    width: 80%;
+    aspect-ratio: 1;
+    margin: auto;
+    background-color: rgb(var(--white) / 0.8);
+    border-radius: inherit;
+    border: 1rem solid transparent;
+
+    display: grid;
+    place-items: center;
+    @include shadow(0.1);
+    &:hover {
+      animation: Rotate 1s ease-in;
+    }
+  }
+
+  //!================================[Picked]
+  &__picked {
+    width: clamp(20rem, 100%, 45rem);
+    aspect-ratio: 1;
+    display: grid;
+    align-content: space-between;
+    gap: 5.5rem;
+    @include media($desktop) {
+      aspect-ratio: unset;
+      width: clamp(20rem, 100%, 80rem);
+    }
+    .replay-mobile {
+      width: fit-content;
+      justify-self: center;
+    }
+  }
+
+  &__picked-container {
+    width: 100%;
+    aspect-ratio: 2/1;
+    display: flex;
+    gap: 1rem;
+
+    @include media($desktop) {
+      margin-inline: auto;
+      aspect-ratio: 3/1;
+      justify-content: center;
+
+      &.winner--picked {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .picked {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(3rem, 3vh, 4rem);
+    @include media($desktop) {
+      width: fit-content;
+      gap: 5rem;
+    }
+  }
+
+  .picked__value {
+    width: 60%;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    background-color: rgb(var(--black) / 0.2);
+    position: relative;
+    @include insetShadow(0.1);
+    @include media($desktop) {
+      width: 80%;
+    }
+    //!===================================[winner]
+    .winner,
+    &.game--winner {
+      &::after,
+      &::before {
+        content: "";
+        inset: 0;
+        border-radius: 50%;
+        @include gradient(
+          var(--color-header-outline),
+          var(--color-header-outline),
+          false,
+          360deg
+        );
+        opacity: 0.15;
+        position: absolute;
+        z-index: -1;
+        @include insetShadow(0.5);
+      }
+    }
+
+    &.game--winner {
+      &::after {
+        transform: scale(2.5);
+      }
+      &::before {
+        transform: scale(3);
+      }
+    }
+
+    .winner {
+      &::after {
+        transform: scale(2);
+      }
+      &::before {
+        transform: scale(1.5);
+      }
+    }
+  }
+}
+
+//!=======================[Replay]
+.replay {
+  display: grid;
+  gap: 1.5rem;
+
+  &.replay--desktop {
+    display: none;
+    height: fit-content;
+    align-self: center;
+    text-align: center;
+  }
+
+  @include media($desktop) {
+    display: none;
+    &.replay--desktop {
+      display: grid;
+      place-self: center;
+    }
+  }
+}
+//!======================[Score]
+.heading {
+  width: clamp(20rem, 80%, 50rem);
+  aspect-ratio: 3.2/1;
+  border-radius: 1rem;
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem;
+  border: 1px solid var(--color-header-outline);
+  outline: 1px solid var(--color-header-outline);
+  @include insetShadow(0.5);
+
+  @include media($mobileMid) {
+    aspect-ratio: 4/1;
+  }
+
+  @include media($desktop) {
+    width: clamp(20rem, 80%, 70rem);
+    aspect-ratio: 5/1;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: rgb(var(--white) / 0.1);
+    opacity: 0.5;
+  }
+
+  .score-wrapper {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    aspect-ratio: 1;
+    display: grid;
+    justify-items: start;
+    align-items: center;
+  }
+
+  //!=======================[Score]
+  &__score {
+    background-color: rgb(var(--white));
+    border-radius: 1rem;
+    padding: 3rem clamp(1.5rem, 1.5vw, 2.5rem);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    @include insetShadow(0.5);
+
+    @include media($mobileMid) {
+      padding: 3rem clamp(1.5rem, 2.4vw, 2.5rem);
+    }
+  }
+
+  &__score-container {
+    display: flex;
+    border: 1px solid var(--color-header-outline);
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    gap: 0.5rem;
+    @include insetShadow(0.1);
+
+    @include media($desktop) {
+      flex-direction: column;
+      gap: unset;
+      padding: 0.5rem;
+    }
+  }
+}
+
+.footer {
+  @include media($desktop) {
+    width: 80%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: end;
+  }
+}
+//!================[DOM
+
+.show {
+  animation: Visible 0.5s ease-in forwards !important;
+}
+
+.hide {
+  animation: Hidden 0.5s ease-out forwards !important;
+}
+
+.hidden {
+  display: none !important;
+}

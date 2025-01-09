@@ -1,0 +1,66 @@
+@use "../abstracts/mixin" as *;
+
+.btn {
+  --_translate: 0;
+  height: fit-content;
+  padding: 0.3rem 0.5rem;
+  text-transform: uppercase;
+  transform: translateY(var(--_translate));
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1),
+    outline 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:active {
+    --_translate: 1rem;
+  }
+
+  &:hover {
+    color: var(--color-header-outline);
+  }
+
+  &:focus-within {
+    outline: 1px solid var(--color-header-outline);
+  }
+  //?====[Rules]
+  &.btn--rules {
+    color: rgb(var(--white));
+    border-radius: 0.5rem;
+    padding: 0.6rem 2.5rem;
+    letter-spacing: 0.3rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-header-outline);
+    outline: 1px solid transparent;
+    @include font-size(0.9);
+    @include shadow(0.3);
+  }
+
+  //?====[Close]
+  &.btn--close {
+    color: inherit;
+    padding: 0.5rem;
+    display: grid;
+    place-items: center;
+    border: none;
+    outline: 1px solid transparent;
+    @include insetShadow(0.1);
+    transition: outline 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+      box-shadow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover,
+    &:focus-within {
+      box-shadow: 0 0 0 transparent;
+      outline: 1px solid var(--color-header-outline);
+    }
+  }
+
+  //?=====================[winner]
+  &.btn--play-again {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(var(--white));
+    @include font-size();
+    color: var(--color-dark-text);
+    border-radius: 0.5rem;
+    @include insetShadow(0.2);
+    padding-block: 0.6rem;
+  }
+}

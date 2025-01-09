@@ -1,0 +1,30 @@
+:root {
+  //!=============[ Primary Gradients]
+  --gradient-scissors-start: rgb(236 158 14);
+  --gradient-scissors-end: rgb(236 169 34);
+  --gradient-paper-start: rgb(72 101 244);
+  --gradient-paper-end: rgb(86 113 245);
+  --gradient-rock-start: rgb(220 46 78);
+  --gradient-rock-end: rgb(221 64 93);
+  --gradient-lizard-start: rgb(131 79 227);
+  --gradient-lizard-end: rgb(140 93 229);
+  --gradient-spock-start: rgb(64 185 206);
+  --gradient-spock-end: rgb(82 190 209);
+
+  //!=================[ Neutral]
+  --color-dark-text: rgb(59 67 99);
+  --color-score-text: rgb(42 70 192);
+  --color-header-outline: rgb(96 110 133);
+  --color-red: rgb(255 0 0);
+  //!===========[Block]
+  --white: 255 255 255;
+  --black: 0 0 0;
+  //!===================[Background]
+  --gradient-background-start: rgb(31 55 86);
+  --gradient-background-end: rgb(20 21 57);
+  //!======================[Fonts]
+  --fnt-family: "Barlow Semi Condensed";
+  --fnt-size: clamp(1.9rem, 1.8vw, 3rem);
+  --fnt-bold: 700;
+  --fnt-mid: 600;
+}
