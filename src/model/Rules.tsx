@@ -2,7 +2,6 @@ import { useRef, MouseEvent, useEffect } from "react";
 import Svg from "../component/Svg";
 import { ICONS } from "../config/config";
 import { GameMethods } from "../component/method";
-import Footer from "./Footer";
 
 const Rules = () => {
   const rulesRef = useRef<HTMLDivElement | null>(null);
