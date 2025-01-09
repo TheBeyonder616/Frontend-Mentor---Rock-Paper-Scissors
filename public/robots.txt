@@ -1,10 +1,10 @@
 # Allow all search engines to crawl everything
 User-agent: *
-Disallow: /private/   # Block crawlers from the private directory (example)
-Disallow: /admin/     # Block crawlers from the admin section (example)
+Disallow: /private/   
+Disallow: /admin/     
 
 # Allow everything else
 Allow: / 
 
 # Sitemap location to help crawlers
-Sitemap: https://yourwebsite.com/sitemap.xml
+Sitemap: https://frontend-mentor-rock-paper-scissors-dun.vercel.app/
