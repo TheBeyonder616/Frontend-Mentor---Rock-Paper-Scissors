@@ -20,7 +20,7 @@ This project is a modern and interactive implementation of the classic "Rock, Pa
 ### Screenshot
 
 ![Desktop](./design/Desktop.png)
-![Mobile](./design/Desktop.png)
+![Mobile](./design/Mobile.png)
 
 ### Links
 
