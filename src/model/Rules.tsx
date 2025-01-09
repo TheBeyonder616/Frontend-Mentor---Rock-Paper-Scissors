@@ -2,6 +2,7 @@ import { useRef, MouseEvent, useEffect } from "react";
 import Svg from "../component/Svg";
 import { ICONS } from "../config/config";
 import { GameMethods } from "../component/method";
+import Footer from "./Footer";
 
 const Rules = () => {
   const rulesRef = useRef<HTMLDivElement | null>(null);
@@ -43,7 +44,7 @@ const Rules = () => {
   }, []);
 
   return (
-    <footer className="footer">
+    <article className="footer__rules">
       <section className="rules" ref={rulesRef} onClick={hideRules}>
         <div className="rules__wrapper">
           {/*!=============== Rules Head=============  */}
@@ -79,7 +80,7 @@ const Rules = () => {
           Rules
         </button>
       </div>
-    </footer>
+    </article>
   );
 };
 

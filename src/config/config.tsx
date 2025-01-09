@@ -48,3 +48,7 @@ export type ScoreType = {
 };
 
 export const DELAY_HOME_VALUE = 1000;
+
+export const FRONT_END_MENTOR_URL =
+  "https://www.frontendmentor.io?ref=challenge";
+export const MY_URL_Link = "https://github.com/TheBeyonder616";

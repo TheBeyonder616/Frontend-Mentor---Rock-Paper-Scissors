@@ -359,15 +359,6 @@
     }
   }
 }
-
-.footer {
-  @include media($desktop) {
-    width: 80%;
-    margin-inline: auto;
-    display: flex;
-    justify-content: end;
-  }
-}
 //!================[DOM
 
 .show {
